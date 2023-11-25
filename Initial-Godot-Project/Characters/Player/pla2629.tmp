@@ -1140,19 +1140,17 @@ position = Vector2(-2.11765, -1.14286)
 position = Vector2(0, 2.38419e-07)
 shape = SubResource("RectangleShape2D_f1h18")
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state", "animation_tree")]
+[node name="CharacterStateMachine" type="Node" parent="."]
 script = ExtResource("5_he7p7")
-start_state = NodePath("Idle")
-animation_tree = NodePath("../AnimationTree")
 
-[node name="Move" type="Node" parent="CharacterStateMachine"]
+[node name="MoveState" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("7_be132")
 animation_name = "idle"
 
-[node name="Idle" type="Node" parent="CharacterStateMachine"]
+[node name="IdleState" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("8_agv3i")
 animation_name = "idle"
 
-[node name="Swing" type="Node" parent="CharacterStateMachine"]
+[node name="SwingState" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_12l67")
 animation_name = "swing"

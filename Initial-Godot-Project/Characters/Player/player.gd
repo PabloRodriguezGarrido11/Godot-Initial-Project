@@ -6,7 +6,7 @@ class_name Player
 
 @onready var sprite: Sprite2D = $Body
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var character_state_machine: CharacterStateMachine = $CharacterStateMachine
+@onready var character_state_machine: StateMachine = $CharacterStateMachine
 
 func _ready():
 	animation_tree.active = true

@@ -6,7 +6,7 @@ func process_physics(delta: float) -> PlayerState:
 	if characterDirection:
 		character.velocity = characterDirection * character.speed
 	else:
-		animation_state_machine.change_state(idle_state)
+		animation_state_machine.change_state(PlayerVariables.STATE_IDLE)
 
 	character.move_and_slide()
 

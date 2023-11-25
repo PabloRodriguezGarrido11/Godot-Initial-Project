@@ -2,11 +2,12 @@ extends State
 
 class_name PlayerState
 
+enum PlayerStates { IDLE, MOVE, SWING }
+
 var characterDirection: Vector2 = Vector2.ZERO
 
 func _process(delta):
 	characterDirection = Input.get_vector("left", "right", "up", "down").normalized()
-	
 	updateParamsPosition()
 
 func updateParamsPosition():
