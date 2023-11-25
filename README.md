@@ -1,6 +1,6 @@
 # Godot-Initial-Projects
 
-### Monorepository container for multiple Godot4 utilities, patterns and tutorials collected throughout the learning process from zero.
+### Mono-repository container for multiple Godot4 utilities, patterns and tutorials collected throughout the learning process from zero.
 
 
 | Project name | Topics |
