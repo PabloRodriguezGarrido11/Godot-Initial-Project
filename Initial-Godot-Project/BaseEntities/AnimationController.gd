@@ -12,7 +12,7 @@ func play(animationName: String) -> void:
 func stop(animationName: String) -> void:
 	setBool(animationName, false)
 	
-func changePosition(stateName: String, paramValue):
+func changePosition(stateName: String, paramValue) -> void:
 	changeParam(stateName, POSITION_PARAM, paramValue)
 
 func setBool(paramName: String, paramValue: bool = true) -> void:
@@ -21,5 +21,5 @@ func setBool(paramName: String, paramValue: bool = true) -> void:
 func changeParam(stateName: String, paramName: String, paramValue) -> void:
 	self[getAnimationPath(stateName, paramName)] = paramValue
 
-func getAnimationPath(stateName: String, paramName: String):
+func getAnimationPath(stateName: String, paramName: String) -> String:
 	return BASE_PATH % [stateName, paramName]

@@ -1,9 +1,9 @@
 extends Node
 
 #States
-@export var STATE_IDLE= "idle"
-@export var STATE_MOVE = "move"
-@export var STATE_SWING = "swing"
+@export var STATE_IDLE: String = "idle"
+@export var STATE_MOVE: String = "move"
+@export var STATE_SWING: String = "swing"
 
 #Moving
 @export var ANIM_GO_LEFT: String = "go_left"

@@ -2,24 +2,15 @@ extends State
 
 class_name PlayerState
 
-enum PlayerStates { IDLE, MOVE, SWING }
-
-var characterDirection: Vector2 = Vector2.ZERO
-
 func _process(delta):
-	characterDirection = Input.get_vector("left", "right", "up", "down").normalized()
-	updateParamsPosition()
+	update_blend_positions()
 
-func updateParamsPosition():
-	animation_tree.changePosition("idle", characterDirection)
-	animation_tree.changePosition("move", characterDirection)
-	animation_tree.changePosition("swing", characterDirection)
+func update_blend_positions():
+	if (character.direction == Vector2.ZERO):
+		return
+	
+	animation_tree.changePosition(PlayerVariables.STATE_IDLE, character.direction)
+	animation_tree.changePosition(PlayerVariables.STATE_MOVE, character.direction)
+	animation_tree.changePosition(PlayerVariables.STATE_SWING, character.direction)
 
-func process_input(event: InputEvent) -> PlayerState:
-	return null
 
-func process_frame(delta: float) -> PlayerState:
-	return null
-
-func process_physics(delta: float) -> PlayerState:
-	return null

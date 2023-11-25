@@ -21,7 +21,7 @@ func init(parent: CharacterBody2D) -> void:
 
 	change_state(start_state.name.to_lower())
 
-func change_state(new_state_name: String) -> void:
+func change_state(new_state_name) -> void:
 	var new_state = states[new_state_name.to_lower()]
 	
 	if new_state == null:
@@ -33,7 +33,7 @@ func change_state(new_state_name: String) -> void:
 	current_state = new_state
 	current_state.enter()
 	
-func switch_state(new_state_name: String) -> void:
+func switch_state(new_state_name) -> void:
 	if new_state_name == null:
 		return
 

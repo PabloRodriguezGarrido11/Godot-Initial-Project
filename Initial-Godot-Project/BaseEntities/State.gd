@@ -2,8 +2,6 @@ extends Node
 
 class_name State
 
-signal state_transition
-
 @export var animation_name: String
 
 @onready var character: CharacterBody2D

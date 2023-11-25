@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.1", "Mobile")
 [autoload]
 
 PlayerVariables="*res://Characters/Player/Constants/PlayerVariables.gd"
+InputsMap="*res://Global/InputsMap.gd"
 
 [display]
 
