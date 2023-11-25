@@ -2,9 +2,6 @@ extends GroundState
 
 class_name MoveState
 
-@export var idle_state: PlayerState
-@export var swing_state: PlayerState
-
 func process_physics(delta: float) -> PlayerState:
 	if characterDirection:
 		character.velocity = characterDirection * character.speed

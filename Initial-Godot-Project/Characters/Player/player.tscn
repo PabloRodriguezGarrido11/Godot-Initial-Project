@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b147s4cg0df4s"]
+[gd_scene load_steps=41 format=3 uid="uid://b147s4cg0df4s"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_oedks"]
 [ext_resource type="Texture2D" uid="uid://e8pmyh1fytai" path="res://assets/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="2_b068y"]
@@ -1084,11 +1084,56 @@ _data = {
 "swing_down": SubResource("Animation_pw4ga")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_73pge"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oqc8v"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_njkw1"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m1k5u"]
+animation = &"idle_up"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_g64l4"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_73pge")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_oqc8v")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_njkw1")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_m1k5u")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f72bs"]
+animation = &"go_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tposu"]
+animation = &"go_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m6omt"]
+animation = &"go_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o7y5k"]
+animation = &"go_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_uowwv"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_f72bs")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_tposu")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_m6omt")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_o7y5k")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_v0j50"]
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fa38r"]
 advance_mode = 2
@@ -1160,7 +1205,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/move = false
 parameters/conditions/swing = true
-parameters/idle/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(-0.00160003, 0.988024)
 parameters/move/blend_position = Vector2(0, 0)
 parameters/swing/blend_position = Vector2(0, 0)
 script = ExtResource("3_vi1oo")
@@ -1196,14 +1241,15 @@ idle_state = NodePath("../IdleState")
 swing_state = NodePath("../SwingState")
 animation_name = "idle"
 
-[node name="SwingState" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
-script = ExtResource("6_12l67")
-idle_state = NodePath("../IdleState")
-move_state = NodePath("../MoveState")
-animation_name = "swing"
-
 [node name="IdleState" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("move_state", "swing_state")]
 script = ExtResource("8_agv3i")
 move_state = NodePath("../MoveState")
 swing_state = NodePath("../SwingState")
 animation_name = "idle"
+
+[node name="SwingState" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("6_12l67")
+idle_state = NodePath("../MoveState")
+move_state = NodePath("../IdleState")
+swing_state = NodePath("")
+animation_name = "swing"

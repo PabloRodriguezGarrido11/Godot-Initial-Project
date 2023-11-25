@@ -3,19 +3,23 @@ extends AnimationTree
 class_name AnimationController
 
 const BASE_PATH = "parameters/%s/%s"
+const CONDITIONS_PARAM = "conditions"
+const POSITION_PARAM = "blend_position"
 
 func play(animationName: String) -> void:
 	setBool(animationName)
 	
 func stop(animationName: String) -> void:
 	setBool(animationName, false)
+	
+func changePosition(stateName: String, paramValue):
+	changeParam(stateName, POSITION_PARAM, paramValue)
 
 func setBool(paramName: String, paramValue: bool = true) -> void:
-	var animationPath = BASE_PATH % ["conditions", paramName]
-	
-	self[animationPath] = paramValue
+	changeParam(CONDITIONS_PARAM, paramName, paramValue)
 
-func changeParam(stateName: String, paramName: String, paramValue: bool) -> void:
-	var animationPath = BASE_PATH % [stateName, paramName]
-	
-	self[animationPath] = paramValue
+func changeParam(stateName: String, paramName: String, paramValue) -> void:
+	self[getAnimationPath(stateName, paramName)] = paramValue
+
+func getAnimationPath(stateName: String, paramName: String):
+	return BASE_PATH % [stateName, paramName]
