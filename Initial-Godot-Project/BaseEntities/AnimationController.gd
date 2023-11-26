@@ -12,6 +12,9 @@ func play(animationName: String) -> void:
 func stop(animationName: String) -> void:
 	setBool(animationName, false)
 	
+func get_position(stateName: String) -> Vector2:
+	return self[getAnimationPath(stateName, POSITION_PARAM)]
+	
 func changePosition(stateName: String, paramValue) -> void:
 	changeParam(stateName, POSITION_PARAM, paramValue)
 

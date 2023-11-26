@@ -24,10 +24,11 @@ func init(parent: CharacterBody2D) -> void:
 func change_state(new_state_name) -> void:
 	var new_state = states[new_state_name.to_lower()]
 	
-	if new_state == null:
+	if new_state == null || new_state == current_state:
 		return
 	
 	if current_state:
+		var current_state_name = current_state.name
 		current_state.exit()
 
 	current_state = new_state
@@ -47,3 +48,6 @@ func process_input(event: InputEvent) -> void:
 
 func process_frame(delta: float) -> void:
 	switch_state(current_state.process_frame(delta))
+	
+func get_name_current_state() -> String:
+	return current_state.name.to_lower()

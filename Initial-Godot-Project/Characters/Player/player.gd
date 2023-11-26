@@ -6,7 +6,7 @@ class_name Player
 @export var direction: Vector2 = Vector2.ZERO
 
 @onready var sprite: Sprite2D = $Body
-@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_tree: AnimationController = $AnimationTree
 @onready var character_state_machine: StateMachine = $StateMachine
 
 func _ready():
@@ -17,8 +17,8 @@ func _physics_process(delta: float) -> void:
 	character_state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
-	direction = getCharacterDirection()
+	direction = get_character_direction()
 	character_state_machine.process_frame(delta)
 	
-func getCharacterDirection():
+func get_character_direction():
 	return Input.get_vector(InputsMap.LEFT, InputsMap.RIGHT, InputsMap.UP,  InputsMap.DOWN).normalized()
